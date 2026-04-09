@@ -56,7 +56,7 @@ const auth = (...roles: USERROLE[]) => {
         // Get user session
         try {
             const session = await betterAuth.api.getSession({
-                headers: req.headers as any,
+                headers: req.headers as any || "better-auth.session_token",
             });
             console.log("Session: ", session);
 
@@ -105,5 +105,6 @@ console.log("Allowed roles:", roles);
         }
     };
 }
+
 
 export default auth;
